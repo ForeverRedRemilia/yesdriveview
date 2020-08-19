@@ -7,7 +7,7 @@
             <el-form-item v-model="u_pass" label="密码">
                 <el-input placeholder="请输入密码" type="password"></el-input>
             </el-form-item>
-            <el-button @click="login" type="primary">登录</el-button>
+            <el-button @click="login" type="primary" style="width: 300px;font-weight: bold;background-color: #2777f8">登录</el-button>
         </el-form>
     </div>
 </template>
