@@ -22,7 +22,6 @@
                         :accuracy="accuracy"
                         :slider-text="text"
                 ></slide-verify>
-                <div>{{msg}}</div>
             </el-form-item>
             <el-button @click="login" type="primary" style="width: 300px;font-weight: bold;background-color: #2777f8">
                 登录
@@ -32,27 +31,26 @@
 </template>
 
 <script>
+    import SlideVerify from "@/components/slide-verify";
     export default {
         name: "Login",
+        components: {SlideVerify},
         data() {
             return {
                 u_name: '',
                 u_pass: '',
-                msg: '',
                 text: '向右滑动填充拼图',
                 // 精确度小，可允许的误差范围小；为1时，则表示滑块要与凹槽完全重叠，才能验证成功。默认值为5
-                accuracy: 5,
+                accuracy: 3,
             }
         },
         methods: {
             login() {
                 this.$router.push("/index")
             },
-            onSuccess(times) {
-                this.msg = `login success, 耗时${(times / 1000).toFixed(1)}s`;
+            onSuccess() {
             },
             onFail() {
-                this.msg = ''
             },
             onRefresh() {
                 this.msg = ''
@@ -60,7 +58,6 @@
             onFulfilled() {
             },
             onAgain() {
-                this.msg = 'try again';
                 // 刷新
                 this.$refs.slideblock.reset();
             },
